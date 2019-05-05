@@ -4,8 +4,9 @@ class AccessToken < ApplicationRecord
   belongs_to :user
 
   validates :token,
-            presence: true
-
+            presence: true,
+            uniqueness: true
+            
   after_initialize :generate_token
 
   private
