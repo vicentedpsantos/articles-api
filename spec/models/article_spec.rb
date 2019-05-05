@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   describe '#validations' do
-    it 'should test that the factory iis valid' do
+    it 'should test that the factory is valid' do
       expect(build :article).to be_valid
     end
 
