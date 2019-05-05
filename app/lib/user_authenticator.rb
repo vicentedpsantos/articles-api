@@ -10,12 +10,10 @@ class UserAuthenticator
   end
 
   def perform
-    if token.try(:error).present?
-      fail AuthenticationError
-    else
-      prepare_user
-      @access_token = user.access_token.presence || user.create_access_token
-    end
+    fail AuthenticationError if token.try(:error).present?
+
+    prepare_user
+    @access_token = user.access_token.presence || user.create_access_token
   end
 
   private
