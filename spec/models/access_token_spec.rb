@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe AccessToken, type: :model do
@@ -9,8 +11,8 @@ RSpec.describe AccessToken, type: :model do
 
     it 'should validate token' do
       access_token = create :access_token
-      expect(build :access_token, token: '').to be_invalid
-      expect(build :access_token, token: access_token.token).to be_invalid
+      expect(build(:access_token, token: '')).to be_invalid
+      expect(build(:access_token, token: access_token.token)).to be_invalid
     end
   end
 
