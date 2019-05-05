@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :provider,
             presence: true
+
+  has_one :access_token, dependent: :destroy
 end

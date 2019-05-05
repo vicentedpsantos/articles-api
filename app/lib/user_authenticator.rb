@@ -3,14 +3,19 @@
 class UserAuthenticator
   class AuthenticationError < StandardError; end
 
-  attr_reader :user
+  attr_reader :user, :access_token
 
-  def initialize(code); end
+  def initialize(code)
+    @code = code
+  end
 
   def perform
-    fail AuthenticationError if token.try(:error).present?
-
-    prepare_user
+    if token.try(:error).present?
+      fail AuthenticationError
+    else
+      prepare_user
+      @access_token = user.access_token.presence || user.create_access_token
+    end
   end
 
   private
@@ -40,6 +45,6 @@ class UserAuthenticator
               User.find_by(login: user_data[:login])
             else
               User.create(user_data.merge(provider: 'github'))
-    end
+            end
   end
 end
