@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   validates :title,
-    presence: true
+            presence: true
 
   validates :content,
-    presence: true
+            presence: true
 
   validates :slug,
-    presence: true,
-    uniqueness: true
+            presence: true,
+            uniqueness: true
 
   scope :recent, -> { order(created_at: :desc) }
 end

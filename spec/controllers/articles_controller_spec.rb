@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ArticlesController do
@@ -13,11 +15,11 @@ describe ArticlesController do
       create_list :article, 2
       subject
       Article.recent.each_with_index do |article, index|
-        expect(json_data[index]['attributes']).to eq({
-          "title" => article.title,
-          "content" => article.content,
-          "slug" => article.slug
-        })
+        expect(json_data[index]['attributes']).to eq(
+          'title' => article.title,
+          'content' => article.content,
+          'slug' => article.slug
+        )
       end
     end
 
@@ -35,6 +37,25 @@ describe ArticlesController do
       expect(json_data.length).to eq 1
       expected_article = Article.recent.second.id.to_s
       expect(json_data.first['id']).to eq(expected_article)
+    end
+  end
+
+  describe '#show' do
+    let(:article) { create :article }
+    subject { get :show, params: { id: article.id } }
+
+    it 'should return a success response' do
+      subject
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'should return proper json' do
+      subject
+      expect(json_data['attributes']).to eq(
+        'title' => article.title,
+        'content' => article.content,
+        'slug' => article.slug
+      )
     end
   end
 end

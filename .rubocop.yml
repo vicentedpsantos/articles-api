@@ -1,0 +1,186 @@
+AllCops:
+    Exclude:
+        - 'bin/*'
+        - 'db/schema.rb'
+    TargetRubyVersion: 2.5
+    TargetRailsVersion: 5.2
+Layout/ClassStructure:
+    Enabled: true
+    Categories:
+        module_inclusion:
+            - include
+            - prepend
+            - extend
+            - included
+        association:
+            - belongs_to
+            - has_and_belongs_to_many
+            - has_many
+            - has_one
+            - composed_of
+        attribute:
+            - class_attribute
+            - attr_accessor
+            - attr_reader
+            - attr_writer
+            - attr_accessible
+            - attr_protected
+            - attribute
+            - serialize
+            - store
+            - store_accessor
+            - enum
+        validation:
+            - validates
+            - validate
+            - validates_associated
+            - validates_with
+        delegation:
+            - delegate
+            - def_delegators
+        scope:
+            - default_scope
+            - scope
+        model_callbacks:
+            - after_initialize
+            - after_find
+            - before_validation
+            - after_validation
+            - around_save
+            - before_save
+            - around_create
+            - before_create
+            - after_create
+            - around_update
+            - before_update
+            - after_update
+            - after_save
+            - after_touch
+            - around_destroy
+            - before_destroy
+            - after_destroy
+            - after_commit
+            - after_rollback
+        controller_callbacks:
+            - around_action
+            - before_action
+            - after_action
+        concerning:
+            - concerning
+        ExpectedOrder:
+            - module_inclusion
+            - constants
+            - scope
+            - attribute
+            - association
+            - validation
+            - model_callbacks
+            - controller_callbacks
+            - delegation
+            - concerning
+            - public_class_methods
+            - initializer
+            - public_methods
+            - protected_methods
+            - private_methods
+
+Lint/AmbiguousBlockAssociation:
+    Exclude:
+        - 'spec/**/*_spec.rb'
+        - 'spec/**/*_helper.rb'
+        - 'spec/**/shared_*.rb'
+
+Layout/AlignParameters:
+    EnforcedStyle: with_fixed_indentation
+
+Layout/DotPosition:
+    EnforcedStyle: trailing
+
+Layout/MultilineMethodCallIndentation:
+    EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+    EnforcedStyle: indented
+
+Metrics/AbcSize:
+    Exclude:
+      - 'db/migrate/*.rb'
+
+Metrics/BlockLength:
+    Exclude:
+        - 'config/environments/*.rb'
+        - 'config/initializers/*.rb'
+        - 'db/migrate/*.rb'
+        - 'lib/tasks/*.rake'
+        - 'spec/**/*_spec.rb'
+        - 'spec/**/*_helper.rb'
+        - 'spec/**/shared_*.rb'
+        - 'spec/factories/**/*.rb'
+        - 'config/routes.rb'
+
+Metrics/ClassLength:
+    Exclude:
+        - 'db/migrate/*.rb'
+
+Metrics/LineLength:
+    Max: 120
+
+Metrics/MethodLength:
+    Max: 15
+    Exclude:
+        - 'db/migrate/*.rb'
+
+Metrics/ModuleLength:
+    Exclude:
+        - 'spec/**/*_spec.rb'
+
+Naming/MemoizedInstanceVariableName:
+    Enabled: false
+
+Naming/VariableNumber:
+    EnforcedStyle: snake_case
+
+Rails:
+    Enabled: true
+
+Rails/CreateTableWithTimestamps:
+    Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+    Enabled: false
+
+Rails/NotNullColumn:
+    Enabled: false
+
+Rails/SkipsModelValidations:
+    Enabled: false
+
+Style/AndOr:
+    EnforcedStyle: conditionals
+
+Style/Documentation:
+    Enabled: false
+
+Style/FormatStringToken:
+    EnforcedStyle: template
+
+Style/RescueStandardError:
+    EnforcedStyle: implicit
+
+Style/Send:
+    Enabled: true
+
+Style/SignalException:
+    EnforcedStyle: semantic
+
+Style/SingleLineBlockParams:
+    Methods:
+        - reduce:
+        - acc
+        - elem
+        - inject:
+            - acc
+            - elem
+            -
+Style/TrivialAccessors:
+    ExactNameMatch: true
