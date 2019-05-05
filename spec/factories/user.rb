@@ -3,9 +3,9 @@
 FactoryBot.define do
   factory :user do
     sequence(:login) { |n| "vsantos #{n}" }
-    sequence(:name) { "Vicente Santos" }
-    sequence(:url) { 'http://example.com' }
-    sequence(:avatar_url) { 'http://example.com/avatar' }
-    sequence(:provider) { 'github' }
+    name { 'Vicente Santos' }
+    url { 'http://example.com' }
+    avatar_url { 'http://example.com/avatar' }
+    provider { 'github' }
   end
 end
