@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  skip_before_action :authorize!,
+                     only: %i[index show]
+
   def index
     render json: serializer.new(Article.recent.
       page(params[:page]).
