@@ -58,4 +58,17 @@ describe ArticlesController do
       )
     end
   end
+
+  describe '#create' do
+    subject { post :create }
+
+    context 'when user is not authorized' do
+      it_behaves_like 'forbidden_requests'
+    end
+
+    context 'when invalid code is provided' do
+      before { request.headers['authorization'] = 'Invalid token' }
+      it_behaves_like 'forbidden_requests'
+    end
+  end
 end

@@ -176,11 +176,10 @@ Style/SignalException:
 Style/SingleLineBlockParams:
     Methods:
         - reduce:
-        - acc
-        - elem
+          - acc
+          - elem
         - inject:
-            - acc
-            - elem
-            -
+          - acc
+          - elem
 Style/TrivialAccessors:
     ExactNameMatch: true
